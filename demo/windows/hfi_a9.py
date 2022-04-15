@@ -6,7 +6,6 @@ import serial
 import struct
 import time
 import sys
-#import imp
 if sys.getdefaultencoding() != 'utf-8':
     imp.reload(sys)
     sys.setdefaultencoding('utf-8')
@@ -24,7 +23,6 @@ def hex_to_ieee(len, buff):
     for i in range(len // 2 - 3, 11, -4):
         for j in range(i, i - 4, -1):
             str += buff[j]            
-        #data.append(struct.unpack('>f', str.decode('hex'))[0])
         data.append(struct.unpack('>f', bytes.fromhex(str.decode('UTF-8')))[0])
         #print(str)
         str = b''
